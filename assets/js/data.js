@@ -54,7 +54,7 @@ window.PORTFOLIO = {
     {
       id: "model", label: "Model", icon: "◇",
       text: "Model data into star schemas and reporting tables that analysts can query without reading pipeline code.",
-      tools: ["Dimensional modelling", "DuckDB", "SQL"],
+      tools: ["Dimensional modelling", "SQL", "Star schemas"],
       example: "Sales platform: fct_sales with customer, product and date dimensions across staging, marts and reporting layers."
     },
     {
@@ -114,7 +114,6 @@ window.PORTFOLIO = {
     { name: "Google BigQuery", cat: "cloud", level: "learning", note: "Serverless warehouse" },
 
     { name: "Dimensional modelling", cat: "wh", level: "projects", note: "Star schema with facts and dimensions" },
-    { name: "DuckDB", cat: "wh", level: "projects", note: "Warehouse with raw, staging, marts and reporting schemas" },
     { name: "Data lake zones", cat: "wh", level: "projects", note: "Raw, clean and rejected zones per pipeline run" },
     { name: "Delta Lake / Lakehouse", cat: "wh", level: "learning", note: "ACID tables on the data lake" },
     { name: "Parquet & columnar formats", cat: "wh", level: "learning", note: "Efficient storage for analytics" },
@@ -199,13 +198,13 @@ window.PORTFOLIO = {
       built: [
         "Ingestion of CSVs plus the Frankfurter exchange-rate API into a raw zone versioned per run, with optional S3 upload.",
         "A pandas validation layer covering schema, types, duplicates, missing values, business rules and referential integrity. Every rejected row is stored with its reason.",
-        "A DuckDB warehouse with raw, staging, marts, reporting and meta schemas, and a fct_sales star schema with three dimensions.",
+        "A SQL warehouse with raw, staging, marts, reporting and meta schemas, and a fct_sales star schema with three dimensions.",
         "Nine SQL data-quality tests, including reconciliation of reporting totals to the fact table. Any failure fails the run.",
         "A Streamlit dashboard, Docker Compose packaging, and GitHub Actions CI with pytest on every push."
       ],
       outcome: "Bad data is caught before it reaches a chart, and anyone can reproduce the whole platform with one command.",
-      flow: ["CSV + API", "Raw zone", "Validate", "DuckDB star schema", "SQL tests", "Dashboard"],
-      stack: ["Python", "pandas", "SQL", "DuckDB", "Streamlit", "Docker", "GitHub Actions", "pytest", "REST API", "S3"],
+      flow: ["CSV + API", "Raw zone", "Validate", "SQL star schema", "SQL tests", "Dashboard"],
+      stack: ["Python", "pandas", "SQL", "Streamlit", "Docker", "GitHub Actions", "pytest", "REST API", "S3"],
       links: [{ label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/sales-analytics-platform" }]
     },
     {
