@@ -66,8 +66,8 @@ window.PORTFOLIO = {
     {
       id: "serve", label: "Serve & Orchestrate", icon: "▶",
       text: "Schedule, log and containerise the pipeline, then serve dashboards and queryable tables to the business.",
-      tools: ["Docker", "GitHub Actions", "Airflow", "Streamlit", "QuickSight"],
-      example: "Sales platform: one-command Docker Compose run, CI on every push, and a Streamlit dashboard."
+      tools: ["Docker", "GitHub Actions", "Airflow", "QuickSight"],
+      example: "Sales platform: one-command Docker Compose run, CI on every push, and an interactive dashboard."
     }
   ],
 
@@ -128,7 +128,6 @@ window.PORTFOLIO = {
     { name: "CI/CD", cat: "ops", level: "production", note: "Azure DevOps pipelines and GitHub Actions" },
     { name: "Docker & Compose", cat: "ops", level: "projects", note: "One-command, reproducible pipeline runs" },
     { name: "Linux & Bash", cat: "ops", level: "learning", note: "Shell scripting and servers" },
-    { name: "Terraform", cat: "ops", level: "learning", note: "Infrastructure as code" },
 
     { name: "Data validation rules", cat: "dq", level: "projects", note: "Schema, types, duplicates and business rules" },
     { name: "SQL data tests", cat: "dq", level: "projects", note: "Tests that return failing rows and fail the run" },
@@ -141,7 +140,6 @@ window.PORTFOLIO = {
     { name: "MongoDB / NoSQL", cat: "db", level: "learning", note: "Document stores" },
 
     { name: "Data visualisation", cat: "bi", level: "projects", note: "Turning tables into decisions" },
-    { name: "Streamlit", cat: "bi", level: "projects", note: "Interactive revenue and data-quality dashboard" },
     { name: "Plotly", cat: "bi", level: "projects", note: "Interactive charts" },
     { name: "Power BI", cat: "bi", level: "learning", note: "Business dashboards" },
 
@@ -200,11 +198,11 @@ window.PORTFOLIO = {
         "A pandas validation layer covering schema, types, duplicates, missing values, business rules and referential integrity. Every rejected row is stored with its reason.",
         "A SQL warehouse with raw, staging, marts, reporting and meta schemas, and a fct_sales star schema with three dimensions.",
         "Nine SQL data-quality tests, including reconciliation of reporting totals to the fact table. Any failure fails the run.",
-        "A Streamlit dashboard, Docker Compose packaging, and GitHub Actions CI with pytest on every push."
+        "An interactive dashboard, Docker Compose packaging, and GitHub Actions CI with pytest on every push."
       ],
       outcome: "Bad data is caught before it reaches a chart, and anyone can reproduce the whole platform with one command.",
       flow: ["CSV + API", "Raw zone", "Validate", "SQL star schema", "SQL tests", "Dashboard"],
-      stack: ["Python", "pandas", "SQL", "Streamlit", "Docker", "GitHub Actions", "pytest", "REST API", "S3"],
+      stack: ["Python", "pandas", "SQL", "Docker", "GitHub Actions", "pytest", "REST API", "S3"],
       links: [{ label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/sales-analytics-platform" }]
     },
     {
