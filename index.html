@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vishnu Madhav Machineni · Data Engineer</title>
+  <meta name="description" content="Vishnu Madhav Machineni is a Data Engineer in Trier, Germany building reliable ETL/ELT pipelines with Python, SQL, Spark and AWS/Azure. Actively looking for full-time Data Engineer roles.">
+  <meta name="author" content="Vishnu Madhav Machineni">
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://vishnumac03.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vishnu Madhav Machineni · Data Engineer">
+  <meta property="og:description" content="Building reliable data pipelines with Python, SQL, Spark and the cloud. Actively looking for full-time Data Engineer roles.">
+  <meta property="og:image" content="https://vishnumac03.github.io/assets/img/og-card.png">
+  <meta property="og:url" content="https://vishnumac03.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>
+    // apply the saved or system theme before first paint
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vishnu Madhav Machineni",
+    "jobTitle": "Data Engineer",
+    "email": "mailto:vishnumachineni03@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Trier", "addressCountry": "DE" },
+    "alumniOf": ["University of Petroleum and Energy Studies"],
+    "affiliation": "Universität Trier",
+    "sameAs": ["https://github.com/VISHNUMAC03"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a class="logo" href="#top" aria-label="Back to top">
+        <span class="logo__mark">VM</span><span class="logo__dot">.</span>
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#playground">Playground</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="palette-btn" type="button" aria-label="Open command palette" title="Command palette (Ctrl+K)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4a6 6 0 1 0 3.9 10.6l4.7 4.7 1.4-1.4-4.7-4.7A6 6 0 0 0 10 4Zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></svg>
+          <kbd>Ctrl K</kbd>
+        </button>
+        <button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light and dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h0v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M2 12h3m14 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        </button>
+        <a class="btn btn--small btn--primary nav__hire" href="#contact">Hire me</a>
+        <button class="icon-btn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <a class="status" href="#contact">
+            <span class="status__dot"></span>
+            Actively looking for full-time Data Engineer roles
+          </a>
+          <p class="hero__hello">Hi, I'm Vishnu 👋</p>
+          <h1 class="hero__name">Vishnu Madhav <span class="grad">Machineni</span></h1>
+          <p class="hero__role" aria-live="polite">
+            <span class="mono">&gt;</span> <span id="typed">Data Engineer</span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero__lead">
+            I build reliable data pipelines that turn raw, messy data into clean, analytics-ready tables,
+            with Python, SQL, Spark and the cloud. Based in Trier, Germany.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#projects">See my pipelines</a>
+            <a class="btn btn--ghost" href="#contact">Let's talk</a>
+            <button class="btn btn--ghost" type="button" data-action="print">Résumé (PDF)</button>
+          </div>
+          <ul class="hero__meta">
+            <li><span class="mono">📍</span> Trier, Germany</li>
+            <li><span class="mono">🎓</span> M.Sc. Data Science · Universität Trier</li>
+            <li><span class="mono">💼</span> 17 months industry experience</li>
+          </ul>
+        </div>
+        <div class="hero__visual">
+          <div class="avatar">
+            <div class="avatar__ring"></div>
+            <picture>
+              <source srcset="assets/img/vishnu.webp" type="image/webp">
+              <img src="assets/img/vishnu.jpg" alt="Portrait of Vishnu Madhav Machineni" width="440" height="440">
+            </picture>
+            <span class="orbit orbit--1">SQL</span>
+            <span class="orbit orbit--2">Spark</span>
+            <span class="orbit orbit--3">AWS</span>
+            <span class="orbit orbit--4">Python</span>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">01 · About</p>
+          <h2>From raw rows to <span class="grad">trusted numbers</span></h2>
+        </header>
+        <div class="about reveal">
+          <div class="about__text">
+            <p id="about-summary"></p>
+            <p>
+              At GroupUP Solutions I automated data workflows handling 10K+ records a day, built REST APIs that keep
+              systems in sync and tuned SQL behind dashboards used by 5K+ people. At Becton, Dickinson and Company I
+              worked with Azure DevOps CI/CD and Git. Today I'm deepening my data engineering stack while studying for
+              my M.Sc. in Data Science in Germany.
+            </p>
+            <div class="looking">
+              <p class="looking__title"><span class="status__dot"></span> Open to full-time roles as</p>
+              <ul class="chips" id="looking-for"></ul>
+            </div>
+          </div>
+          <div class="stats" id="stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="section section--alt" id="pipeline">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">02 · How I work</p>
+          <h2>Click through how I <span class="grad">build a pipeline</span></h2>
+          <p class="section__sub">Every stage below comes from a project I've built. Pick a stage to see the tools and a real example.</p>
+        </header>
+        <div class="pipe reveal">
+          <div class="pipe__stages" id="pipe-stages" role="tablist" aria-label="Pipeline stages"></div>
+          <div class="pipe__panel" id="pipe-panel" role="tabpanel" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">03 · Skills</p>
+          <h2>The <span class="grad">data engineering</span> toolkit</h2>
+          <p class="section__sub">An honest map of the modern data stack: what I've used at work, what I've used in projects, and what I'm learning right now.</p>
+        </header>
+        <div class="skills-tools reveal">
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4a6 6 0 1 0 3.9 10.6l4.7 4.7 1.4-1.4-4.7-4.7A6 6 0 0 0 10 4Zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></svg>
+            <input id="skill-search" type="search" placeholder="Search skills, e.g. Spark" aria-label="Search skills">
+          </label>
+          <div class="legend" id="skill-legend" role="group" aria-label="Filter by experience level"></div>
+        </div>
+        <div class="filters reveal" id="skill-filters" role="group" aria-label="Filter by category"></div>
+        <div class="skills-grid" id="skills-grid"></div>
+        <p class="empty" id="skills-empty" hidden>No skills match that search.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section section--alt" id="experience">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">04 · Journey</p>
+          <h2>Experience &amp; <span class="grad">education</span></h2>
+        </header>
+        <div class="tabs reveal" role="tablist" aria-label="Journey">
+          <button class="tab is-active" role="tab" aria-selected="true" data-tab="work" type="button">Work</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="edu" type="button">Education</button>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">05 · Projects</p>
+          <h2>Pipelines I've <span class="grad">shipped</span></h2>
+          <p class="section__sub">Open any card to see the problem, what I built, the data flow and the stack.</p>
+        </header>
+        <div class="filters reveal" id="project-filters" role="group" aria-label="Filter projects"></div>
+        <div class="projects" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section class="section section--alt" id="playground">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">06 · Playground</p>
+          <h2>Query my résumé <span class="grad">with SQL</span></h2>
+          <p class="section__sub">A tiny SQL engine running in your browser. Try a query below, or type <code>help</code>.</p>
+        </header>
+        <div class="console reveal">
+          <div class="console__bar">
+            <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+            <span class="console__title">vishnu@portfolio: ~/resume.db</span>
+          </div>
+          <div class="console__examples" id="sql-examples"></div>
+          <div class="console__out" id="console-out" aria-live="polite"></div>
+          <form class="console__in" id="console-form" autocomplete="off">
+            <label for="console-input" class="mono prompt">sql&gt;</label>
+            <input id="console-input" type="text" spellcheck="false" placeholder="SELECT name, level FROM skills WHERE category = 'Cloud'" aria-label="SQL query or command">
+            <button class="btn btn--small btn--primary" type="submit">Run</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEYOND -->
+    <section class="section" id="beyond">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">07 · Beyond the pipeline</p>
+          <h2>Team player, <span class="grad">on and off stage</span></h2>
+        </header>
+        <div class="beyond reveal">
+          <article class="card card--glow beyond__dance">
+            <p class="beyond__emoji" aria-hidden="true">💃🏽</p>
+            <h3 id="lead-title"></h3>
+            <p class="muted" id="lead-dates"></p>
+            <p id="lead-text"></p>
+            <ul class="awards" id="awards"></ul>
+          </article>
+          <article class="card beyond__langs">
+            <h3>Languages</h3>
+            <ul class="langs" id="langs"></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="contact__copy">
+            <p class="eyebrow">08 · Contact</p>
+            <h2>Hiring a <span class="grad">Data Engineer?</span></h2>
+            <p class="contact__lead">
+              I'm actively looking for a <strong>full-time Data Engineer role</strong>. If your team needs someone who
+              builds tested, well-documented pipelines and cares about data quality, let's talk.
+            </p>
+            <div class="contact__quick">
+              <button class="copy" type="button" id="copy-email" aria-label="Copy email address">
+                <span class="mono" id="email-text">vishnumachineni03@gmail.com</span>
+                <span class="copy__hint">Copy</span>
+              </button>
+              <div class="socials" id="socials"></div>
+            </div>
+          </div>
+          <form class="contact__form card" id="contact-form">
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Company<input name="company" autocomplete="organization"></label>
+            <label>Message<textarea name="message" rows="4" required placeholder="Hi Vishnu, we have a Data Engineer opening..."></textarea></label>
+            <button class="btn btn--primary" type="submit">Open in my email app</button>
+            <p class="form-note muted">This opens your email app with the message filled in. Nothing is stored on this site.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Vishnu Madhav Machineni · Built from scratch with HTML, CSS and JavaScript.</p>
+      <a href="#top" class="muted">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- project modal -->
+  <dialog class="modal" id="project-modal" aria-labelledby="modal-title">
+    <div class="modal__body" id="modal-body"></div>
+  </dialog>
+
+  <!-- command palette -->
+  <dialog class="palette" id="palette" aria-label="Command palette">
+    <input id="palette-input" type="text" placeholder="Type a command or section…" aria-label="Search commands">
+    <ul id="palette-list" role="listbox"></ul>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- print-only résumé -->
+  <article id="print-resume" aria-hidden="true"></article>
+
+  <noscript><p class="noscript">This site works best with JavaScript enabled. Contact: vishnumachineni03@gmail.com</p></noscript>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
