@@ -1,4 +1,4 @@
-# Vishnu Madhav Machineni · Data Engineer Portfolio
+# Vishnu Madhav Machineni · Data Engineering Portfolio
 
 My personal portfolio website, built from scratch with plain HTML, CSS and JavaScript (no frameworks, no build step).
 
@@ -28,4 +28,4 @@ Then open http://localhost:8000.
 
 ## Contact
 
-vishnumachineni03@gmail.com · Actively looking for full-time Data Engineer roles.
+vishnumachineni03@gmail.com · [LinkedIn](https://www.linkedin.com/in/vishnu-madhav-16ab6a1a2/) · Data engineering enthusiast, actively looking for full-time roles.

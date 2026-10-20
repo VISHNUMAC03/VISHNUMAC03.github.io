@@ -540,7 +540,7 @@
   $("#contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
     var f = new FormData(e.target);
-    var subject = "Data Engineer opportunity" + (f.get("company") ? " at " + f.get("company") : "");
+    var subject = "Full-time data role" + (f.get("company") ? " at " + f.get("company") : "");
     var body = f.get("message") + "\n\n— " + f.get("name") + (f.get("company") ? ", " + f.get("company") : "");
     window.location.href = "mailto:" + D.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     toast("Opening your email app…");
@@ -587,7 +587,8 @@
       { label: "Copy email address", hint: "action", run: copyEmail },
       { label: "Toggle light / dark theme", hint: "action", run: toggleTheme },
       { label: "Download résumé as PDF", hint: "action", run: printResume },
-      { label: "Open GitHub profile", hint: "link", run: function () { window.open(D.links.github, "_blank", "noopener"); } }
+      { label: "Open GitHub profile", hint: "link", run: function () { window.open(D.links.github, "_blank", "noopener"); } },
+      { label: "Open LinkedIn profile", hint: "link", run: function () { if (D.links.linkedin) window.open(D.links.linkedin, "_blank", "noopener"); } }
     ].concat(D.projects.map(function (p) { return { label: "Project: " + p.title, hint: "case study", run: function () { openProject(p.id); } }; }));
     function render() {
       var q = inp.value.trim().toLowerCase();

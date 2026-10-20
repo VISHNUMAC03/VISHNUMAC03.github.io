@@ -5,23 +5,23 @@
 window.PORTFOLIO = {
   name: "Vishnu Madhav Machineni",
   firstName: "Vishnu",
-  title: "Data Engineer",
+  title: "Data Engineering Enthusiast",
   location: "Trier, Germany",
   email: "vishnumachineni03@gmail.com",
   links: {
     github: "https://github.com/VISHNUMAC03",
-    linkedin: "" // add your LinkedIn URL here and the button appears automatically
+    linkedin: "https://www.linkedin.com/in/vishnu-madhav-16ab6a1a2/"
   },
-  availability: "Actively looking for full-time Data Engineer roles",
+  availability: "Actively looking for full-time roles in data engineering",
   roles: [
-    "Data Engineer",
+    "Data Engineering Enthusiast",
     "ETL / ELT pipeline builder",
-    "Big Data engineer",
+    "Big Data explorer",
     "Cloud data wrangler",
     "SQL optimiser"
   ],
   summary:
-    "I build reliable data pipelines that turn raw, messy data into clean, analytics-ready tables. " +
+    "I'm a data engineering enthusiast who builds reliable data pipelines that turn raw, messy data into clean, analytics-ready tables. " +
     "With a B.Tech in Computer Science (Big Data), industry experience automating data workflows, APIs and SQL, " +
     "and an ongoing M.Sc. in Data Science at Universität Trier, I care about pipelines that are tested, observable and easy to trust.",
 
