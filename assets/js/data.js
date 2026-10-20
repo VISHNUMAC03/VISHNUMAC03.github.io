@@ -54,7 +54,7 @@ window.PORTFOLIO = {
     {
       id: "model", label: "Model", icon: "◇",
       text: "Model data into star schemas and reporting tables that analysts can query without reading pipeline code.",
-      tools: ["Dimensional modelling", "DuckDB", "dbt", "Snowflake"],
+      tools: ["Dimensional modelling", "DuckDB", "SQL"],
       example: "Sales platform: fct_sales with customer, product and date dimensions across staging, marts and reporting layers."
     },
     {
@@ -116,8 +116,6 @@ window.PORTFOLIO = {
     { name: "Dimensional modelling", cat: "wh", level: "projects", note: "Star schema with facts and dimensions" },
     { name: "DuckDB", cat: "wh", level: "projects", note: "Warehouse with raw, staging, marts and reporting schemas" },
     { name: "Data lake zones", cat: "wh", level: "projects", note: "Raw, clean and rejected zones per pipeline run" },
-    { name: "dbt", cat: "wh", level: "learning", note: "Moving SQL models into dbt with tests" },
-    { name: "Snowflake", cat: "wh", level: "learning", note: "Cloud data warehouse" },
     { name: "Delta Lake / Lakehouse", cat: "wh", level: "learning", note: "ACID tables on the data lake" },
     { name: "Parquet & columnar formats", cat: "wh", level: "learning", note: "Efficient storage for analytics" },
 

@@ -206,7 +206,7 @@
   /* ---------------- marquee ---------------- */
   (function marquee() {
     var items = ["Python", "SQL", "Apache Spark", "AWS S3", "AWS Glue", "Athena", "Azure Data Factory", "DuckDB", "Docker",
-      "GitHub Actions", "pandas", "Star schema", "Data quality", "REST APIs", "Airflow", "dbt", "Kafka", "Snowflake", "Databricks"];
+      "GitHub Actions", "pandas", "Star schema", "Data quality", "REST APIs", "Airflow", "Kafka", "Databricks"];
     var html = items.concat(items).map(function (s) { return "<span>" + esc(s) + "</span>"; }).join("");
     $("#marquee").innerHTML = html;
   })();
