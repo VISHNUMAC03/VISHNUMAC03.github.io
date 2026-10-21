@@ -106,9 +106,10 @@ window.PORTFOLIO = {
     { name: "Amazon Athena", cat: "cloud", level: "projects", note: "Serverless SQL over S3" },
     { name: "Amazon QuickSight", cat: "cloud", level: "projects", note: "Dashboards for YouTube analytics" },
     { name: "Azure DevOps", cat: "cloud", level: "production", note: "CI, automated testing and deployments at BD" },
-    { name: "Azure Data Factory", cat: "cloud", level: "learning", note: "Building a parameterised, config-driven ingestion pipeline" },
-    { name: "Azure Data Lake Gen2", cat: "cloud", level: "learning", note: "Landing zone for the AdventureWorks pipeline" },
-    { name: "Databricks", cat: "cloud", level: "learning", note: "Spark notebooks and lakehouse workflows" },
+    { name: "Azure Data Factory", cat: "cloud", level: "projects", note: "Parameterised, config-driven ingestion pipeline for AdventureWorks" },
+    { name: "Azure Data Lake Gen2", cat: "cloud", level: "projects", note: "Raw, clean and final zones of the AdventureWorks pipeline" },
+    { name: "Databricks", cat: "cloud", level: "projects", note: "PySpark notebook for the AdventureWorks clean layer" },
+    { name: "Azure Synapse Analytics", cat: "cloud", level: "projects", note: "Serverless SQL views and CETAS external tables over the lake" },
     { name: "AWS Lambda", cat: "cloud", level: "learning", note: "Event-driven ingestion" },
     { name: "Amazon Redshift", cat: "cloud", level: "learning", note: "Cloud data warehousing" },
     { name: "Google BigQuery", cat: "cloud", level: "learning", note: "Serverless warehouse" },
@@ -116,7 +117,7 @@ window.PORTFOLIO = {
     { name: "Dimensional modelling", cat: "wh", level: "projects", note: "Star schema with facts and dimensions" },
     { name: "Data lake zones", cat: "wh", level: "projects", note: "Raw, clean and rejected zones per pipeline run" },
     { name: "Delta Lake / Lakehouse", cat: "wh", level: "learning", note: "ACID tables on the data lake" },
-    { name: "Parquet & columnar formats", cat: "wh", level: "learning", note: "Efficient storage for analytics" },
+    { name: "Parquet & columnar formats", cat: "wh", level: "projects", note: "Clean and gold layers of the AdventureWorks pipeline" },
 
     { name: "Pipeline orchestration in Python", cat: "orch", level: "projects", note: "One entry point with logging and exit codes" },
     { name: "Config-driven pipelines", cat: "orch", level: "projects", note: "JSON-parameterised Lookup and ForEach ingestion" },
@@ -141,7 +142,7 @@ window.PORTFOLIO = {
 
     { name: "Data visualisation", cat: "bi", level: "projects", note: "Turning tables into decisions" },
     { name: "Plotly", cat: "bi", level: "projects", note: "Interactive charts" },
-    { name: "Power BI", cat: "bi", level: "learning", note: "Business dashboards" },
+    { name: "Power BI", cat: "bi", level: "projects", note: "Interactive AdventureWorks sales dashboard with DAX measures" },
 
     { name: "REST APIs", cat: "int", level: "production", note: "Built and maintained APIs connecting internal systems" },
     { name: "API ingestion", cat: "int", level: "projects", note: "Live exchange rates with an offline fallback" },
@@ -207,19 +208,25 @@ window.PORTFOLIO = {
     },
     {
       id: "adventureworks", featured: true,
-      title: "AdventureWorks Dynamic Ingestion Pipeline",
-      year: "2026", status: "In progress", cats: ["de", "azure"],
-      summary: "A config-driven ingestion pipeline that lands ten AdventureWorks tables from GitHub into a data lake using one parameterised copy activity.",
-      problem: "Hard-coding one copy activity per file does not scale. Adding a table should mean adding a line of config, not a new pipeline.",
+      title: "Azure End-to-End Data Engineering: AdventureWorks",
+      year: "2026", status: "Complete", cats: ["de", "azure", "analytics"],
+      summary: "An end-to-end Azure pipeline: Data Factory ingests ten AdventureWorks files from GitHub, Databricks cleans them with PySpark, Synapse serverless SQL serves a gold layer, and an interactive Power BI dashboard turns it into insights.",
+      problem: "Raw sales files need ingesting, cleaning and modelling before anyone can trust a report on them, and hard-coding one copy activity per file does not scale.",
       built: [
-        "Published the source dataset: 10 related CSV tables with 56K sales order lines (2015–2017), 18K customers, products, returns and territories, documented with an ER diagram.",
-        "A JSON control file with one entry per table: relative source URL, sink folder and sink file name.",
-        "A Lookup activity reads the control file and a ForEach loop feeds each entry into parameterised HTTP and data-lake datasets."
+        "A config-driven Data Factory pipeline: a Lookup reads a JSON control file and a ForEach feeds each entry into one parameterised copy activity, landing 10 files in the raw zone of ADLS Gen2.",
+        "A PySpark notebook on Azure Databricks that types dates, derives columns and merges 2015–2017 sales into one table, writing Parquet to the clean zone through a Microsoft Entra service principal.",
+        "A gold layer in Azure Synapse serverless SQL: OPENROWSET views over the Parquet files and a CETAS external table written back to the lake.",
+        "A four-page interactive Power BI dashboard on a star schema, with DAX measures for revenue, profit margin, orders, customers and return rate.",
+        "Published the source dataset: 10 related CSV tables with 56K sales order lines (2015–2017), 18K customers, products, returns and territories, documented with an ER diagram."
       ],
-      outcome: "New tables are onboarded by adding one JSON entry. Next steps are Spark transformations and a serving layer.",
-      flow: ["GitHub raw", "Lookup config", "ForEach", "Parameterised copy", "Data lake"],
-      stack: ["Azure Data Factory", "ADLS Gen2", "JSON", "HTTP", "GitHub"],
-      links: [{ label: "Dataset on GitHub", url: "https://github.com/VISHNUMAC03/AWDataset" }]
+      outcome: "New tables are onboarded with one JSON entry, and the dashboard shows $24.9M revenue at a 42% margin, with bikes bringing 95% of it.",
+      flow: ["GitHub", "Data Factory", "ADLS raw", "Databricks", "ADLS clean", "Synapse", "Power BI"],
+      stack: ["Azure Data Factory", "ADLS Gen2", "Azure Databricks", "PySpark", "Synapse serverless SQL", "Power BI", "DAX", "Microsoft Entra ID"],
+      links: [
+        { label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/azure-adventureworks-data-engineering" },
+        { label: "Power BI dashboard", url: "https://github.com/VISHNUMAC03/azure-adventureworks-data-engineering#4-reporting-interactive-power-bi-dashboard" },
+        { label: "Dataset on GitHub", url: "https://github.com/VISHNUMAC03/AWDataset" }
+      ]
     },
     {
       id: "uber", featured: false,
