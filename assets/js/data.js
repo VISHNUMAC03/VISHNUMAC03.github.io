@@ -28,7 +28,7 @@ window.PORTFOLIO = {
   stats: [
     { value: 10, suffix: "K+", label: "records automated per day" },
     { value: 5, suffix: "K+", label: "users served by my dashboards" },
-    { value: 17, suffix: "", label: "months of industry experience" },
+    { value: 27, suffix: "", label: "months of industry experience" },
     { value: 5, suffix: "", label: "end-to-end data projects" }
   ],
 
@@ -152,8 +152,8 @@ window.PORTFOLIO = {
 
   experience: [
     {
-      company: "GroupUP Solutions", role: "Software Developer", location: "Hyderabad, India",
-      start: "Jun 2024", end: "Jun 2025",
+      company: "GroupUP Solutions", role: "Junior Data Engineer", location: "Hyderabad, India",
+      start: "Jun 2024", end: "Feb 2026",
       bullets: [
         "Automated data-processing workflows in C, handling 10K+ records a day and cutting manual data entry and reconciliation.",
         "Built and maintained responsive websites and dashboards in ReactJS, used by 5K+ people across the organisation.",
