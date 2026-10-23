@@ -155,13 +155,13 @@ window.PORTFOLIO = {
       company: "GroupUP Solutions", role: "Junior Data Engineer", location: "Hyderabad, India",
       start: "Jun 2024", end: "Feb 2026",
       bullets: [
-        "Automated data-processing workflows in C, handling 10K+ records a day and cutting manual data entry and reconciliation.",
+        "Automated data-processing workflows in Python and SQL, handling 10K+ records a day and cutting manual data entry and reconciliation.",
         "Built and maintained responsive websites and dashboards in ReactJS, used by 5K+ people across the organisation.",
         "Developed and maintained RESTful APIs that keep data flowing automatically between internal systems.",
         "Optimised SQL queries and database routines to speed up reporting and data retrieval.",
         "Owned ongoing maintenance: bug fixes, updates and performance monitoring."
       ],
-      tags: ["C", "SQL", "REST APIs", "ReactJS", "Automation"]
+      tags: ["Python", "SQL", "REST APIs", "ReactJS", "Automation"]
     },
     {
       company: "Becton, Dickinson and Company", role: "Software Developer", location: "Chandigarh, India",
