@@ -143,6 +143,7 @@ window.PORTFOLIO = {
     { name: "Data visualisation", cat: "bi", level: "projects", note: "Turning tables into decisions" },
     { name: "Plotly", cat: "bi", level: "projects", note: "Interactive charts" },
     { name: "Power BI", cat: "bi", level: "projects", note: "Interactive AdventureWorks sales dashboard with DAX measures" },
+    { name: "Tableau", cat: "bi", level: "projects", note: "Published annotation-quality KPI dashboard on Tableau Public" },
 
     { name: "REST APIs", cat: "int", level: "production", note: "Built and maintained APIs connecting internal systems" },
     { name: "API ingestion", cat: "int", level: "projects", note: "Live exchange rates with an offline fallback" },
@@ -226,6 +227,26 @@ window.PORTFOLIO = {
         { label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/azure-adventureworks-data-engineering" },
         { label: "Power BI dashboard", url: "https://github.com/VISHNUMAC03/azure-adventureworks-data-engineering#4-reporting-interactive-power-bi-dashboard" },
         { label: "Dataset on GitHub", url: "https://github.com/VISHNUMAC03/AWDataset" }
+      ]
+    },
+    {
+      id: "annotation-quality", featured: false,
+      title: "Annotation Quality Analysis",
+      year: "2026", status: "Complete", cats: ["analytics"],
+      summary: "Measures the quality of human annotation data the way an AI evaluation team does: inter-rater reliability, golden-set accuracy, vendor drift and label bias, with an interactive Tableau Public dashboard.",
+      problem: "Labelled training and evaluation data is only as good as the people who label it, and weak raters, unclear guidelines or a drifting vendor stay hidden in a pile of labels.",
+      built: [
+        "Cohen's kappa, Fleiss' kappa and Krippendorff's alpha implemented from first principles and verified against scikit-learn and the krippendorff library.",
+        "Golden-set accuracy per annotator, vendor and week, plus agreement with the majority label to monitor drift over time.",
+        "Bias checks per locale and per annotator, and escalation rules that write plain-language findings when values cross thresholds.",
+        "Tidy CSV extracts and a five-sheet Tableau Public dashboard, an HTML quality report, and a pytest suite."
+      ],
+      outcome: "The analysis flags a weak annotator (69.4% golden accuracy), a hard locale (alpha 0.454) and a vendor whose agreement fell from 89.2% to 83.6%.",
+      flow: ["Ratings", "Reliability metrics", "Golden-set QA", "Drift & bias", "Escalation", "Tableau"],
+      stack: ["Python", "pandas", "NumPy", "pytest", "Tableau", "Krippendorff's alpha", "Cohen's kappa"],
+      links: [
+        { label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/annotation-quality-analysis" },
+        { label: "Tableau dashboard", url: "https://public.tableau.com/app/profile/vishnu.madhav/viz/AnnotationQualityAnalysis/AnnotationQuality-KPIOverview" }
       ]
     },
     {
