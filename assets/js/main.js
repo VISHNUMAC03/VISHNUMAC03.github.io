@@ -266,51 +266,6 @@
     }
   })();
 
-  /* ---------------- skills ---------------- */
-  (function skills() {
-    var state = { cat: "all", q: "", levels: { production: true, projects: true, learning: true } };
-    var grid = $("#skills-grid"), filters = $("#skill-filters"), legend = $("#skill-legend");
-    legend.innerHTML = Object.keys(D.skillLevels).map(function (k) {
-      var l = D.skillLevels[k];
-      return '<button type="button" class="level-toggle lv-' + k + '" aria-pressed="true" data-level="' + k + '" title="' + esc(l.hint) + '"><span class="level-dot"></span>' + esc(l.label) + "</button>";
-    }).join("");
-    function matches(s) {
-      if (!state.levels[s.level]) return false;
-      if (!state.q) return true;
-      var q = state.q.toLowerCase();
-      return (s.name + " " + s.note + " " + D.skillCategories[s.cat]).toLowerCase().indexOf(q) !== -1;
-    }
-    function renderFilters() {
-      var cats = ["all"].concat(Object.keys(D.skillCategories));
-      filters.innerHTML = cats.map(function (c) {
-        var n = D.skills.filter(function (s) { return (c === "all" || s.cat === c) && matches(s); }).length;
-        var label = c === "all" ? "All" : D.skillCategories[c];
-        return '<button type="button" class="filter' + (state.cat === c ? " is-active" : "") + '" data-cat="' + c + '" aria-pressed="' + (state.cat === c) + '">' + esc(label) + '<span class="count">' + n + "</span></button>";
-      }).join("");
-    }
-    function render() {
-      var list = D.skills.filter(function (s) { return (state.cat === "all" || s.cat === state.cat) && matches(s); });
-      grid.innerHTML = list.map(function (s, i) {
-        return '<div class="skill lv-' + s.level + '" style="animation-delay:' + Math.min(i * 18, 400) + 'ms"><div class="skill__top"><span class="skill__name">' + esc(s.name) +
-          '</span><span class="skill__lvl">' + esc(D.skillLevels[s.level].label) + '</span></div><span class="skill__cat">' + esc(D.skillCategories[s.cat]) +
-          '</span><p class="skill__note">' + esc(s.note) + "</p></div>";
-      }).join("");
-      $("#skills-empty").hidden = list.length > 0;
-      renderFilters();
-    }
-    filters.addEventListener("click", function (e) { var b = e.target.closest(".filter"); if (!b) return; state.cat = b.dataset.cat; render(); });
-    legend.addEventListener("click", function (e) {
-      var b = e.target.closest(".level-toggle"); if (!b) return;
-      var k = b.dataset.level;
-      state.levels[k] = !state.levels[k];
-      if (!Object.keys(state.levels).some(function (x) { return state.levels[x]; })) state.levels[k] = true;
-      b.setAttribute("aria-pressed", String(state.levels[k]));
-      render();
-    });
-    $("#skill-search").addEventListener("input", function (e) { state.q = e.target.value.trim(); render(); });
-    render();
-  })();
-
   /* ---------------- timeline ---------------- */
   (function timeline() {
     var tl = $("#timeline");
@@ -609,7 +564,6 @@
       { label: "Go to Latest project", hint: "section", run: go("latest") },
       { label: "Go to About", hint: "section", run: go("about") },
       { label: "Go to Pipeline", hint: "section", run: go("pipeline") },
-      { label: "Go to Skills", hint: "section", run: go("skills") },
       { label: "Go to Experience", hint: "section", run: go("experience") },
       { label: "Go to Projects", hint: "section", run: go("projects") },
       { label: "Open SQL playground", hint: "section", run: function () { go("playground")(); setTimeout(function () { $("#console-input").focus({ preventScroll: true }); }, 500); } },

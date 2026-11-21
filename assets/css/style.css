@@ -240,38 +240,12 @@ code { font-size: 0.9em; background: var(--surface-2); border: 1px solid var(--b
 .fade-in { animation: fadeIn 0.45s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-/* ---------- skills ---------- */
-.skills-tools { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-.search { display: flex; align-items: center; gap: 10px; padding: 0 16px; height: 46px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); flex: 1 1 260px; max-width: 380px; }
-.search:focus-within { border-color: var(--accent); }
-.search svg { width: 18px; height: 18px; fill: var(--muted); flex: none; }
-.search input { border: 0; background: none; color: var(--text); font: inherit; width: 100%; outline: none; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px; }
-.level-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: opacity 0.2s, border-color 0.2s; }
-.level-toggle[aria-pressed="false"] { opacity: 0.45; }
-.level-dot { width: 10px; height: 10px; border-radius: 50%; }
-.lv-production { --lv: var(--ok); }
-.lv-projects { --lv: var(--accent); }
-.lv-learning { --lv: var(--accent-3); }
-.level-dot { background: var(--lv); }
+/* ---------- filters (projects) ---------- */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 .filter { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-size: 0.9rem; font-weight: 500; color: var(--muted); transition: all 0.2s; }
 .filter:hover { color: var(--text); border-color: var(--accent); }
 .filter.is-active { background: var(--text); color: var(--bg); border-color: var(--text); }
 .filter .count { opacity: 0.6; margin-left: 6px; font-size: 0.8em; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-.skill {
-  padding: 16px 18px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border);
-  border-left: 3px solid var(--lv); position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s;
-  animation: fadeIn 0.35s ease both;
-}
-.skill:hover { transform: translateY(-3px); }
-.skill__top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
-.skill__name { font-weight: 600; }
-.skill__lvl { font-size: 0.72rem; font-weight: 600; color: var(--lv); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.04em; }
-.skill__cat { font-size: 0.78rem; color: var(--muted); font-family: var(--font-mono); }
-.skill__note { font-size: 0.86rem; color: var(--muted); margin: 6px 0 0; }
-.empty { color: var(--muted); text-align: center; padding: 30px; }
 
 /* ---------- timeline ---------- */
 .tabs { display: inline-flex; padding: 5px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 34px; }
