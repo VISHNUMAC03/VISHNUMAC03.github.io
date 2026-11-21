@@ -29,7 +29,7 @@ window.PORTFOLIO = {
     { value: 10, suffix: "K+", label: "records automated per day" },
     { value: 5, suffix: "K+", label: "users served by my dashboards" },
     { value: 27, suffix: "", label: "months of industry experience" },
-    { value: 5, suffix: "", label: "end-to-end data projects" }
+    { value: 6, suffix: "", label: "end-to-end data projects" }
   ],
 
   pipeline: [
@@ -118,11 +118,14 @@ window.PORTFOLIO = {
     { name: "Data lake zones", cat: "wh", level: "projects", note: "Raw, clean and rejected zones per pipeline run" },
     { name: "Delta Lake / Lakehouse", cat: "wh", level: "learning", note: "ACID tables on the data lake" },
     { name: "Parquet & columnar formats", cat: "wh", level: "projects", note: "Clean and gold layers of the AdventureWorks pipeline" },
+    { name: "dbt", cat: "wh", level: "projects", note: "Incremental models with per-model watermarks, checked against full rebuilds" },
+    { name: "ClickHouse", cat: "wh", level: "projects", note: "Partitioned, clustered fact table with query_log as the cost ledger" },
+    { name: "Warehouse cost optimisation", cat: "wh", level: "projects", note: "Measured four levers that cut bytes scanned per day by 97.7%" },
 
     { name: "Pipeline orchestration in Python", cat: "orch", level: "projects", note: "One entry point with logging and exit codes" },
     { name: "Config-driven pipelines", cat: "orch", level: "projects", note: "JSON-parameterised Lookup and ForEach ingestion" },
     { name: "Apache Airflow", cat: "orch", level: "learning", note: "DAG scheduling and retries" },
-    { name: "Apache Kafka", cat: "orch", level: "learning", note: "Event streaming" },
+    { name: "Apache Kafka", cat: "orch", level: "projects", note: "Streamed 42M e-commerce events into ClickHouse, at-least-once" },
     { name: "Spark Structured Streaming", cat: "orch", level: "learning", note: "Near-real-time processing" },
 
     { name: "Git & GitHub", cat: "ops", level: "production", note: "Version control and team collaboration" },
@@ -144,6 +147,7 @@ window.PORTFOLIO = {
     { name: "Plotly", cat: "bi", level: "projects", note: "Interactive charts" },
     { name: "Power BI", cat: "bi", level: "projects", note: "Interactive AdventureWorks sales dashboard with DAX measures" },
     { name: "Tableau", cat: "bi", level: "projects", note: "Published annotation-quality KPI dashboard on Tableau Public" },
+    { name: "Grafana", cat: "bi", level: "projects", note: "Live streaming dashboard and a warehouse cost dashboard" },
 
     { name: "REST APIs", cat: "int", level: "production", note: "Built and maintained APIs connecting internal systems" },
     { name: "API ingestion", cat: "int", level: "projects", note: "Live exchange rates with an offline fallback" },
@@ -187,8 +191,42 @@ window.PORTFOLIO = {
     }
   ],
 
+  // The project shown in the "Latest project" section under the hero.
+  // Point `project` at another project id to feature something new.
+  spotlight: {
+    project: "warehouse-costs",
+    date: "Nov 2026",
+    headline: "640 GB → 15 GB scanned per day",
+    pitch: "I built a streaming analytics stack on 42M real e-commerce events, set it up the expensive way on purpose, then fixed one thing at a time and measured every saving from the warehouse's own query log.",
+    metrics: [
+      { value: "−97.7%", label: "bytes scanned per day" },
+      { value: "1.4%", label: "of the data a key dashboard panel now reads" },
+      { value: "2.9%", label: "of a full rebuild's bytes for an incremental dbt run" },
+      { value: "−62%", label: "modelled Snowflake-style bill" }
+    ],
+    insight: "Partitioning cut reads by up to 98% and saved $0 under time-based billing. Know how you're billed before you optimise."
+  },
+
   projectFilters: { all: "All", de: "Data Engineering", aws: "AWS", azure: "Azure", analytics: "Analytics" },
   projects: [
+    {
+      id: "warehouse-costs", featured: true,
+      title: "Warehouse Cost, Measured: Kafka → ClickHouse → dbt",
+      year: "2026", status: "Complete", cats: ["de", "analytics"],
+      summary: "A streaming analytics stack on 42M real e-commerce events, built the expensive way on purpose and then fixed one lever at a time, with every saving measured from the warehouse's own query log.",
+      problem: "\"We cut our warehouse bill by X%\" posts rarely show their work. Dashboards refreshing when nobody looks, full table scans and hourly full rebuilds quietly burn money, and nobody can say which fix actually mattered.",
+      built: [
+        "A Kafka producer that replays a day of the Kaggle REES46 dataset as a live stream, and a consumer that loads micro-batches into ClickHouse at-least-once, keeping partition and offset so duplicates can be audited.",
+        "dbt models on ClickHouse: a fact table partitioned by month and clustered by date and event type, plus sessions, products and daily rollups, all incremental with their own watermarks and checked against full rebuilds.",
+        "Five Grafana dashboards: a live store view, three BI dashboards and a warehouse cost dashboard built on ClickHouse's query_log.",
+        "costlab, a Python toolkit that replays every dashboard query on partitioned and unpartitioned layouts, benchmarks full vs incremental dbt runs and models a Snowflake-style bill (per-second billing, 60 s minimum, auto-suspend).",
+        "Real problems fixed on the way: ClickHouse running out of memory on a 9M-session rebuild, and session IDs that recur days apart breaking a naive incremental model."
+      ],
+      outcome: "Bytes scanned per day fell from 640 GB to 15 GB (−97.7%) and the modelled bill from $206 to $79 a day. The twist: partitioning cut a panel's reads to 1.4% but saved $0 under time-based billing, so the lever that matters depends on how you're billed.",
+      flow: ["Kaggle CSV", "Kafka", "ClickHouse", "dbt incremental", "Grafana", "costlab"],
+      stack: ["Apache Kafka", "ClickHouse", "dbt", "Grafana", "Python", "Docker Compose", "SQL", "pytest"],
+      links: [{ label: "Code on GitHub", url: "https://github.com/VISHNUMAC03/warehouse-cost-optimization" }]
+    },
     {
       id: "sales-platform", featured: true,
       title: "Automated Sales Analytics Data Platform",

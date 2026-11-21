@@ -206,7 +206,7 @@
   /* ---------------- marquee ---------------- */
   (function marquee() {
     var items = ["Python", "SQL", "Apache Spark", "AWS S3", "AWS Glue", "Athena", "Azure Data Factory", "Docker",
-      "GitHub Actions", "pandas", "Star schema", "Data quality", "REST APIs", "Airflow", "Kafka", "Databricks"];
+      "GitHub Actions", "pandas", "Star schema", "Data quality", "REST APIs", "Airflow", "Kafka", "Databricks", "dbt", "ClickHouse", "Grafana"];
     var html = items.concat(items).map(function (s) { return "<span>" + esc(s) + "</span>"; }).join("");
     $("#marquee").innerHTML = html;
   })();
@@ -368,8 +368,10 @@
       var list = D.projects.filter(function (p) { return cat === "all" || p.cats.indexOf(cat) !== -1; });
       grid.innerHTML = list.map(function (p, i) {
         var badge = p.status === "In progress" ? "badge--progress" : "badge--done";
-        return '<article class="card card--glow project' + (p.featured ? " project--featured" : "") + '" data-id="' + p.id + '" style="animation-delay:' + i * 70 + 'ms">' +
-          '<div class="project__top"><span class="badge ' + badge + '">' + esc(p.status) + "</span>" + (p.featured ? '<span class="badge badge--star">★ Featured</span>' : '<span class="badge">' + esc(p.year) + "</span>") + "</div>" +
+        var latest = D.spotlight && D.spotlight.project === p.id;
+        var tag = latest ? '<span class="badge badge--latest">● Latest</span>' : p.featured ? '<span class="badge badge--star">★ Featured</span>' : '<span class="badge">' + esc(p.year) + "</span>";
+        return '<article class="card card--glow project' + (p.featured ? " project--featured" : "") + (latest ? " project--latest" : "") + '" data-id="' + p.id + '" style="animation-delay:' + i * 70 + 'ms">' +
+          '<div class="project__top"><span class="badge ' + badge + '">' + esc(p.status) + "</span>" + tag + "</div>" +
           "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + "</p>" +
           '<div class="flow">' + p.flow.map(function (f) { return "<span>" + esc(f) + "</span>"; }).join("<b>→</b>") + "</div>" +
           '<button type="button" class="project__more" data-id="' + p.id + '" aria-label="Open case study: ' + esc(p.title) + '">Open case study →</button></article>';
@@ -378,6 +380,33 @@
     filters.addEventListener("click", function (e) { var b = e.target.closest(".filter"); if (!b) return; cat = b.dataset.cat; render(); });
     grid.addEventListener("click", function (e) { var b = e.target.closest(".project"); if (b) openProject(b.dataset.id); });
     render();
+  })();
+
+  /* ---------------- latest project spotlight ---------------- */
+  (function spotlight() {
+    var box = $("#spotlight"), s = D.spotlight;
+    var p = s && D.projects.filter(function (x) { return x.id === s.project; })[0];
+    if (!box) return;
+    if (!p) { box.closest("section").hidden = true; return; }
+    var code = p.links.filter(function (l) { return /github\.com/.test(l.url); })[0];
+    box.innerHTML =
+      '<div class="spotlight__copy">' +
+        '<p class="spotlight__label"><span class="status__dot"></span>Latest project · ' + esc(s.date) + "</p>" +
+        '<h2 id="latest-title" class="grad">' + esc(s.headline) + "</h2>" +
+        '<p class="spotlight__title">' + esc(p.title) + "</p>" +
+        '<p class="spotlight__pitch">' + esc(s.pitch) + "</p>" +
+        '<div class="flow">' + p.flow.map(function (f) { return "<span>" + esc(f) + "</span>"; }).join("<b>→</b>") + "</div>" +
+        '<ul class="chips">' + p.stack.map(function (t) { return '<li class="chip">' + esc(t) + "</li>"; }).join("") + "</ul>" +
+        '<div class="spotlight__cta"><button type="button" class="btn btn--primary" data-open="' + esc(p.id) + '">Read the case study</button>' +
+        (code ? '<a class="btn btn--ghost" href="' + esc(code.url) + '" target="_blank" rel="noopener">Code on GitHub ↗</a>' : "") + "</div>" +
+      "</div>" +
+      '<div class="spotlight__side">' +
+        '<div class="spotlight__metrics">' + s.metrics.map(function (m) {
+          return '<div class="spotlight__metric"><strong class="grad">' + esc(m.value) + "</strong><span>" + esc(m.label) + "</span></div>";
+        }).join("") + "</div>" +
+        '<p class="spotlight__insight"><strong>The twist:</strong> ' + esc(s.insight) + "</p>" +
+      "</div>";
+    box.addEventListener("click", function (e) { var b = e.target.closest("[data-open]"); if (b) openProject(b.dataset.open); });
   })();
 
   /* ---------------- SQL playground ---------------- */
@@ -577,6 +606,7 @@
     var dlg = $("#palette"), inp = $("#palette-input"), list = $("#palette-list"), sel = 0, shown = [];
     function go(id) { return function () { var t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }); }; }
     var actions = [
+      { label: "Go to Latest project", hint: "section", run: go("latest") },
       { label: "Go to About", hint: "section", run: go("about") },
       { label: "Go to Pipeline", hint: "section", run: go("pipeline") },
       { label: "Go to Skills", hint: "section", run: go("skills") },
